@@ -44,13 +44,32 @@ If you want to clean up the generated files, run:
 
 	grunt clean
 
+	
+Build and Test
+--------------
+
+The following components make up the testing
+
+	npm install -g karma
+	npm install -g jasmine-node
+	npm install -g jasmine-jquery
+	download jasmine fixtures into lib\jasmine-fixture\*.js   (https://github.com/searls/jasmine-fixture)
+
+to build and run, from the fullCalendar folder 
+	
+	grunt dev
+	
+	grunt
+	
+	karma start --single-run
+	
 
 Writing Tests
 -------------
 
 When fixing a bug or writing a feature, please make a corresponding HTML file in the `./tests/` directory to visually demonstrate your work. If the test requires user intervention to prove its point, please write instructions for the user to follow. Explore the existing tests for more info.
 
-
+	
 [fc-homepage]: http://arshaw.com/fullcalendar/
 [git]: http://git-scm.com/
 [node]: http://nodejs.org/
