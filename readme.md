@@ -54,7 +54,7 @@ The following components make up the testing
 	npm install -g jasmine-node
 	npm install -g jasmine-jquery
 	download jasmine fixtures into lib\jasmine-fixture\*.js   (https://github.com/searls/jasmine-fixture)
-
+	download jquery.simulate.js into lib\jquery-simulate\*.js  (https://raw.github.com/jquery/jquery-ui/master/tests/jquery.simulate.js)
 to build and run, from the fullCalendar folder 
 	
 	grunt dev

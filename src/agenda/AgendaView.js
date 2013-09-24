@@ -588,7 +588,8 @@ function AgendaView(element, calendar, viewName) {
 	
 	
 	function renderCellOverlay(row0, col0, row1, col1) { // only for all-day?
-		var rect = coordinateGrid.rect(row0, col0, row1, col1, slotLayer);
+		var origin = slotLayer.offset();
+		var rect = coordinateGrid.rect(row0, col0, row1, col1, origin);
 		return renderOverlay(rect, slotLayer);
 	}
 	
@@ -600,7 +601,8 @@ function AgendaView(element, calendar, viewName) {
 			var stretchStart = new Date(Math.max(dayStart, overlayStart));
 			var stretchEnd = new Date(Math.min(dayEnd, overlayEnd));
 			if (stretchStart < stretchEnd) {
-				var rect = coordinateGrid.rect(0, i, 0, i, slotContainer); // only use it for horizontal coords
+				var origin = slotContainer.offset();
+				var rect = coordinateGrid.rect(0, i, 0, i, origin); // only use it for horizontal coords
 				var top = timePosition(dayStart, stretchStart);
 				var bottom = timePosition(dayStart, stretchEnd);
 				rect.top = top;
@@ -618,8 +620,8 @@ function AgendaView(element, calendar, viewName) {
 	-----------------------------------------------------------------------------*/
 	
 	
-	coordinateGrid = new CoordinateGrid(function(rows, cols) {
-		var e, n, p;
+	coordinateGrid = coordsGrid(function() {
+		var e, n, p, rows = [], cols=[];
 		dayHeadCells.each(function(i, _e) {
 			e = $(_e);
 			n = e.offset().left;
@@ -647,6 +649,7 @@ function AgendaView(element, calendar, viewName) {
 				constrain(slotTableTop + snapHeight*(i+1))
 			]);
 		}
+		return {rows:rows,cols:cols};
 	});
 	
 	
@@ -769,7 +772,8 @@ function AgendaView(element, calendar, viewName) {
 		if (helperOption) {
 			var col = dateToCell(startDate).col;
 			if (col >= 0 && col < colCnt) { // only works when times are on same day
-				var rect = coordinateGrid.rect(0, col, 0, col, slotContainer); // only for horizontal coords
+			    var origin = slotContainer.offset();
+				var rect = coordinateGrid.rect(0, col, 0, col, origin); // only for horizontal coords
 				var top = timePosition(startDate, startDate);
 				var bottom = timePosition(startDate, endDate);
 				if (bottom > top) { // protect against selections that are entirely before or after visible range

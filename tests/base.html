@@ -4,12 +4,15 @@
 <link href='../build/out/fullcalendar.css' rel='stylesheet' />
 <link href='../build/out/fullcalendar.print.css' rel='stylesheet' media='print' />
 <script src='../lib/jquery/jquery.js'></script>
+<script src='../lib/jquery-simulate/jquery.simulate.js'></script>
 <script src='../lib/jquery-ui/ui/jquery-ui.js'></script>
 <script src='../build/out/fullcalendar.js'></script>
+
+
 <link href="base.css" rel="stylesheet">
 <script>
 	$(document).ready(function() {
-		$('#calendar').fullCalendar();
+		$('#calendar').fullCalendar({editable:true});
 	});	
 </script>
 </head>

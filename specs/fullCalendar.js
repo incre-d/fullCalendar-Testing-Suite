@@ -23,7 +23,7 @@ describe("When fullCalendar() is called on a div", function () {
 		expect(count).toEqual(2);
 	});
 	
-	describe(" and then added again",function(){
+	xdescribe(" and then added again",function(){
 		it("should still only have a single set of calend",function(){
 			$("#calendar").fullCalendar();
 			$("#calendar").fullCalendar();
@@ -32,5 +32,25 @@ describe("When fullCalendar() is called on a div", function () {
 	
 		});
 	});
+	
+	xdescribe(" when event is dragged from one cell to another",function(){
+		it("should move to the new cell",function(){
+			var eventName = "xyzAllDayEvent";
+			
+			$("#calendar").fullCalendar({editable:true});
+			$("#calendar").fullCalendar("addEventSource",{events:[{title:eventName,start:new Date()}]});
+			var el = $('div .fc-event');	
+			
+			var offsetBefore = el.offset();
+			
+			dump(offsetBefore);
+			var options = { dx: 200 , dy:0, moves:10, handle:"corner"};
+			el.simulate( "drag", options);
+			
+			dump(el.offset());
+			
+		});
+	});
+	
 	
 });

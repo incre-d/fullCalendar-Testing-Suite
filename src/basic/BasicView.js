@@ -388,7 +388,8 @@ function BasicView(element, calendar, viewName) {
 
 	
 	function renderCellOverlay(row0, col0, row1, col1) { // row1,col1 is inclusive
-		var rect = coordinateGrid.rect(row0, col0, row1, col1, element);
+		var origin = element.offset();
+		var rect = coordinateGrid.rect(row0, col0, row1, col1, origin);
 		return renderOverlay(rect, element);
 	}
 	
@@ -426,6 +427,7 @@ function BasicView(element, calendar, viewName) {
 	
 	
 	function dragStart(_dragElement, ev, ui) {
+
 		hoverListener.start(function(cell) {
 			clearOverlays();
 			if (cell) {
@@ -455,8 +457,9 @@ function BasicView(element, calendar, viewName) {
 	}
 	
 	
-	coordinateGrid = new CoordinateGrid(function(rows, cols) {
-		var e, n, p;
+	coordinateGrid = coordsGrid(function() {
+		var e, n, p, rows=[], cols=[];
+		
 		headCells.each(function(i, _e) {
 			e = $(_e);
 			n = e.offset().left;
@@ -467,6 +470,7 @@ function BasicView(element, calendar, viewName) {
 			cols[i] = p;
 		});
 		p[1] = n + e.outerWidth();
+		
 		bodyRows.each(function(i, _e) {
 			if (i < rowCnt) {
 				e = $(_e);
@@ -479,6 +483,7 @@ function BasicView(element, calendar, viewName) {
 			}
 		});
 		p[1] = n + e.outerHeight();
+		return {rows:rows,cols:cols};
 	});
 	
 	

@@ -1,30 +1,39 @@
 
-function CoordinateGrid(buildFunc) {
+function coordsGrid(buildFunc) {
+"use strict"
+	var t = {};
+	
+	//exports
+	t.build = build;
+	t.cell = cell;
+	t.rect = rect;	
 
-	var t = this;
-	var rows;
-	var cols;
+	var data = {
+	// rows and columns stored as pairs of {left, right} ; {top, bottom}
+	// need only store as left positions, + outerWidth
+		rows : [],
+	    cols : []
+		};
 	
-	
-	t.build = function() {
-		rows = [];
-		cols = [];
-		buildFunc(rows, cols);
+	var build = function() {		
+		var ret = buildFunc();	
+		data.rows = ret.rows;
+		data.cols = ret.cols;
 	};
 	
+	var cell = function(x, y) {
 	
-	t.cell = function(x, y) {
-		var rowCnt = rows.length;
-		var colCnt = cols.length;
+		var rowCnt = data.rows.length;
+		var colCnt = data.cols.length;
 		var i, r=-1, c=-1;
 		for (i=0; i<rowCnt; i++) {
-			if (y >= rows[i][0] && y < rows[i][1]) {
+			if (y >= data.rows[i][0] && y < data.rows[i][1]) {
 				r = i;
 				break;
 			}
 		}
 		for (i=0; i<colCnt; i++) {
-			if (x >= cols[i][0] && x < cols[i][1]) {
+			if (x >= data.cols[i][0] && x < data.cols[i][1]) {
 				c = i;
 				break;
 			}
@@ -33,14 +42,16 @@ function CoordinateGrid(buildFunc) {
 	};
 	
 	
-	t.rect = function(row0, col0, row1, col1, originElement) { // row1,col1 is inclusive
-		var origin = originElement.offset();
+	var rect = function(row0, col0, row1, col1, origin) { // row1,col1 is inclusive
+		
 		return {
-			top: rows[row0][0] - origin.top,
-			left: cols[col0][0] - origin.left,
-			width: cols[col1][1] - cols[col0][0],
-			height: rows[row1][1] - rows[row0][0]
+			top: data.rows[row0][0] - origin.top,
+			left: data.cols[col0][0] - origin.left,
+			width: data.cols[col1][1] - data.cols[col0][0],
+			height: data.rows[row1][1] - data.rows[row0][0]
 		};
 	};
-
+	
+	
+	return t;
 }

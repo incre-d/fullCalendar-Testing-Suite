@@ -14,8 +14,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
 	  {pattern: './lib/jquery/jquery.js', watched: false },
+	  {pattern: './lib/jquery-simulate/*.js', watched: false },
 	  {pattern: './lib/jasmine-fixture/*.js', watched: false },
-	  './src/
+	  
+	  './src/common/CoordinateGrid.js',
 	  './build/out/fullcalendar.js',
 	  './build/out/fullcalendar.css',
 	  './build/out/fullcalendar.print.css',
