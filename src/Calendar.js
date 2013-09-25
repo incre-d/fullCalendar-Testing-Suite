@@ -88,14 +88,19 @@ function Calendar(element, options, eventSources) {
 		content = $("<div class='fc-content' style='position:relative'/>")
 			.prependTo(element);
 
-		header = new Header(t, options);
+		header = headerObject(t, options);
 		headerElement = header.render();
+		
+		
 		if (headerElement) {
 			element.prepend(headerElement);
 		}
-
+		
+		$(element).find('.fc-header span.fc-button').each(
+			function(i,_e) {disableTextSelection($(_e));});
+		
 		changeView(options.defaultView);
-
+		
 		if (options.handleWindowResize) {
 			$(window).resize(windowResize);
 		}

@@ -15,9 +15,11 @@ module.exports = function(config) {
     files: [
 	  {pattern: './lib/jquery/jquery.js', watched: false },
 	  {pattern: './lib/jquery-simulate/*.js', watched: false },
+	  {pattern: './lib/jasmine-jquery/*.js', watched: false },
 	  {pattern: './lib/jasmine-fixture/*.js', watched: false },
 	  
 	  './src/common/CoordinateGrid.js',
+	  './src/Header.js',
 	  './build/out/fullcalendar.js',
 	  './build/out/fullcalendar.css',
 	  './build/out/fullcalendar.print.css',
@@ -33,7 +35,7 @@ module.exports = function(config) {
 
 	// test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['dots'],
 
 
     // web server port

@@ -3,11 +3,6 @@ function coordsGrid(buildFunc) {
 "use strict"
 	var t = {};
 	
-	//exports
-	t.build = build;
-	t.cell = cell;
-	t.rect = rect;	
-
 	var data = {
 	// rows and columns stored as pairs of {left, right} ; {top, bottom}
 	// need only store as left positions, + outerWidth
@@ -52,6 +47,10 @@ function coordsGrid(buildFunc) {
 		};
 	};
 	
+	//exports
+	t.build = build;
+	t.cell = cell;
+	t.rect = rect;	
 	
 	return t;
 }
