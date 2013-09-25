@@ -33,6 +33,7 @@ function sectionRenderObject(cal, opt, tm, fcV){
 						if (calendar[buttonName]) {
 							buttonClick = calendar[buttonName]; // calendar method
 						}
+						
 						else if (fcViews[buttonName]) {
 							buttonClick = function() {
 								button.removeClass(theme + '-state-hover'); // forget why
@@ -42,7 +43,7 @@ function sectionRenderObject(cal, opt, tm, fcV){
 						if (buttonClick) {
 						var icon  =options.theme
 							var icon = options.theme ? options.buttonIcons[buttonName] : null; // why are we using smartProperty here?
-							var text = options.buttonText[buttonName]
+							var text = options.buttonText[buttonName] || buttonName;
 							var button = $(
 								"<span class='fc-button fc-button-" + buttonName + " " + theme + "-state-default'>" +
 									(icon ?
@@ -110,6 +111,7 @@ function headerObject(calendar, options, sectionRenderer, views) {
 	var _options = options;
 	var element = $([]);
 	var tm = options.theme ? 'ui' : 'fc';	
+	
 	var _sectionRenderer = sectionRenderer || sectionRenderObject(calendar, options, tm, views);
 	
 	function render() {
@@ -123,6 +125,7 @@ function headerObject(calendar, options, sectionRenderer, views) {
 						.append(_sectionRenderer.render('center'))
 						.append(_sectionRenderer.render('right'))
 				);
+			
 			return element;
 		}
 	}

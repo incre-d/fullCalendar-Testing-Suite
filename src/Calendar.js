@@ -88,7 +88,7 @@ function Calendar(element, options, eventSources) {
 		content = $("<div class='fc-content' style='position:relative'/>")
 			.prependTo(element);
 
-		header = headerObject(t, options);
+		header = headerObject(t, options,null,fcViews);
 		headerElement = header.render();
 		
 		

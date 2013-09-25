@@ -55,9 +55,16 @@ var defaults = {
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
 		today: 'today',
+		// Views 
 		month: 'month',
 		week: 'week',
-		day: 'day'
+		day: 'day',
+		agendaDay : 'day',
+		agendaWeek : 'week',
+		basicDay : 'day',
+		basicWeek : 'week'
+		
+		
 	},
 	
 	// jquery-ui theming

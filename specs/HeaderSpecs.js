@@ -35,17 +35,127 @@ describe("HeaderSpecs:",function(){
 		});
 	});
 	
+	describe("when header is loaded with a view ",function(){
+		beforeEach(function(){
+			affix("#cal-item");
+		});
+		describe("month",function(){
+			it("should display view button",function(){
+			
+				var options = {
+					header: {
+						left: 'month',
+						center: '',
+						right: ''
+					},
+					buttonIcons : { month : 'abc' },
+					buttonText : { month : 'month' }
+					
+				}
+				var el = $("#cal-item")[0];
+				var views = {
+					month : el
+				}
+				
+				var header = headerObject([],options,null,views);
+				var headr = header.render();
+				
+				expect($(headr[0]).find(".fc-header-left")).toContain('span.fc-button-month');
+				
+			})
+		});
+		describe("agendaWeek",function(){
+			iit("should display agendaWeek button",function(){
+			
+				var options = {
+					header: {
+						left: 'agendaWeek',
+						center: '',
+						right: ''
+					},
+					buttonIcons : { agendaWeek : 'abc' },
+					buttonText : { agendaWeek : 'aW' }
+					
+				}
+				var el = $("#cal-item")[0];
+				var views = {
+					agendaWeek : el
+				}
+				
+				var header = headerObject([],options,null,views);
+				var headr = header.render();
+				
+				expect($(headr[0]).find(".fc-header-left")).toContain('span.fc-button-agendaWeek');
+				
+			})
+		});
+		describe("agendaMonth",function(){
+			iit("should display agendaMonth button",function(){
+			
+				var options = {
+					header: {
+						left: 'agendaMonth',
+						center: '',
+						right: ''
+					},
+					buttonIcons : { agendaMonth : 'abc' },
+					buttonText : { agendaMonth : 'aM' }
+					
+				}
+				var el = $("#cal-item")[0];
+				var views = {
+					agendaMonth : el
+				}
+				
+				var header = headerObject([],options,null,views);
+				var headr = header.render();
+				
+				expect($(headr[0]).find(".fc-header-left")).toContain('span.fc-button-agendaMonth');
+				
+			})
+		});
+		describe("basicWeek",function(){
+			iit("should display basicWeek button",function(){
+			
+				var options = {
+					header: {
+						left: 'basicWeek',
+						center: '',
+						right: ''
+					},
+					buttonIcons : { basicWeek : 'abc' },
+					buttonText : { basicWeek : 'aM' }
+					
+				}
+				var el = $("#cal-item")[0];
+				var views = {
+					basicWeek : el
+				}
+				
+				var header = headerObject([],options,null,views);
+				var headr = header.render();
+				
+				expect($(headr[0]).find(".fc-header-left")).toContain('span.fc-button-basicWeek');
+				
+			})
+		});
+	});
+	
+
+
 	describe("when options.theme is ",function(){
 		
 		beforeEach(function(){
 			affix("#cal-item");
 		});
 		
+		
+		
 		describe("turned on", function(){
-			iit("should set the theme to ui",function(){
+			it("should set the theme to ui",function(){
 				var options = 
 				{	theme : false , 
-					header : { left : 'prev,prev,prev', center:'', right: '' },
+					header : { left : 'prev', center:'', right: '' },
 					buttonIcons : { prev : 'abc' },
 					buttonText : { prev : 'PREV' }
 				};		
@@ -85,7 +195,4 @@ describe("HeaderSpecs:",function(){
 	});
 	
 	
-
-	
-
 });
