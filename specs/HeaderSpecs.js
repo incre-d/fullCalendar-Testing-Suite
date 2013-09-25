@@ -65,7 +65,7 @@ describe("HeaderSpecs:",function(){
 			})
 		});
 		describe("agendaWeek",function(){
-			iit("should display agendaWeek button",function(){
+			it("should display agendaWeek button",function(){
 			
 				var options = {
 					header: {
@@ -90,7 +90,7 @@ describe("HeaderSpecs:",function(){
 			})
 		});
 		describe("agendaMonth",function(){
-			iit("should display agendaMonth button",function(){
+			it("should display agendaMonth button",function(){
 			
 				var options = {
 					header: {
@@ -115,7 +115,7 @@ describe("HeaderSpecs:",function(){
 			})
 		});
 		describe("basicWeek",function(){
-			iit("should display basicWeek button",function(){
+			it("should display basicWeek button",function(){
 			
 				var options = {
 					header: {
