@@ -10,7 +10,7 @@ Philosophy of this fork
 -----------------------
 The primary objective in this fork is to generate a complete regression test of fullCalendar. To that end the specs/fullCalendar.js file should be testing all features outlined on [fc-homepage]. 
 
-To contribute, identify a feature, add a describe into fullCalendar.js for the feature, and create nested describes to test each part of that feature. This is in line with the original authors need to have a fully tested user interface.
+To contribute, identify a feature, add a describe into specs/fullCalendar.js for the feature, and create nested describes to test each part of that feature. This is in line with the original authors need to have a fully tested user interface.
 
 The philosophy I am adopting in the code itself is purely selfish.
 

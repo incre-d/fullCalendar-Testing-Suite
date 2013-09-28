@@ -29,7 +29,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-		'./specs/fullCalendar.js'
+		'./specs/fullCalendar*.js'
     ],
 
 	// test results reporter to use

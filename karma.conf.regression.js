@@ -20,7 +20,7 @@ module.exports = function(config) {
 	  {pattern: './lib/jasmine-jquery/*.js', watched: false },
 	  {pattern: './lib/jasmine-fixture/*.js', watched: false },
 	  {pattern: './regression/fullcalendar.min.js', watched: false },
-	  'specs/fullCalendar.js'
+	  'specs/fullCalendar*.js'
 	  
     ],
 

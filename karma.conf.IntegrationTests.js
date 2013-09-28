@@ -23,7 +23,7 @@ module.exports = function(config) {
 	  './build/out/fullcalendar.js',
 	  './build/out/fullcalendar.css',
 	  './build/out/fullcalendar.print.css',
-      './specs/fullCalendar.js'
+      './specs/fullCalendar*.js'
 	  
     ],
 
