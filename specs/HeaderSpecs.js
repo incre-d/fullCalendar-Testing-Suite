@@ -21,11 +21,35 @@ describe("HeaderSpecs:",function(){
 			expect(mockRenderer.render.calls[0].args[0]).toEqual('left');
 			expect(mockRenderer.render.calls[1].args[0]).toEqual('center');
 			expect(mockRenderer.render.calls[2].args[0]).toEqual('right');
-				
 			
 		});
 	});
 	
+	describe("when updateTitle called with abc",function(){
+		it("should set title to abc",function(){
+			var options = { theme : true, header: { left:'title',center:'',right:''} };
+			var header = headerObject([],options);
+			var headr = header.render();						
+			header.updateTitle('abc');
+			expect($(headr[0]).find('.fc-header-title')).toContainText('abc');
+			
+			
+		});
+	});
+	describe("when destroy is called after other methods",function(){
+		it("should reset header to original options",function(){
+			var options = { theme : true, header: { left:'title',center:'',right:''} };
+			var header = headerObject([],options);
+			
+			
+			var preDestroyHtml = header.render().html();
+			header.updateTitle("abc");
+			header.destroy();
+			var postDestroyHtml = header.render().html();
+			expect(preDestroyHtml).toEqual(postDestroyHtml);
+			
+		});
+	});
 	describe("when adding title to a section",function(){
 		it("should have a title in the appropriate section",function(){
 			var options = { theme : true, header: { left:'title',center:'',right:''} };

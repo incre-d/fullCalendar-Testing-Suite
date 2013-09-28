@@ -14,22 +14,19 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
 	  {pattern: './lib/jquery/jquery.js', watched: false },
-	  {pattern: './lib/jquery/jquery-ui/ui/jquery-ui.js', watched: false },
-	  {pattern: './lib/jquery/jquery-ui/ui/jquery.ui.draggable.js', watched: false },
+	  {pattern: './lib/jquery-ui/ui/jquery-ui.js', watched: false },
+	  {pattern: './lib/jquery-ui/ui/jquery.ui.draggable.js', watched: false },
 	  {pattern: './lib/jquery-simulate/*.js', watched: false },
 	  {pattern: './lib/jasmine-jquery/*.js', watched: false },
 	  {pattern: './lib/jasmine-fixture/*.js', watched: false },
-	  
-	  './src/common/CoordinateGrid.js',
-	  './src/Header.js',
-	  'specs/**/*.js',
+	  {pattern: './regression/fullcalendar.min.js', watched: false },
+	  'specs/fullCalendar.js'
 	  
     ],
 
 
     // list of files to exclude
     exclude: [
-		'./specs/fullCalendar.js'
     ],
 
 	// test results reporter to use
@@ -38,7 +35,7 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 9876,
+    port: 9875,
 
 	// enable / disable colors in the output (reporters and logs)
     colors: true,

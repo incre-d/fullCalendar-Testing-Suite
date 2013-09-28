@@ -1,78 +1,59 @@
-
-FullCalendar - Full-sized drag & drop event calendar
+FullCalendar Testing Suite
 ====================================================
 
-This document describes how to modify or contribute to the FullCalendar project. If you are looking for end-developer documentation, please visit the [project homepage][fc-homepage].
+This fork for FullCalendar is dedicated to testing the exposed fullCalendar plugin.
+It uses karma, PhantomJS, jasmine, jasmine-jquery, jasmine-fixture, jquery.simulate.js
 
+To review setup of FullCalendar please refer to the fullCalendar repo.
+
+Philosophy of this fork
+-----------------------
+The primary objective in this fork is to generate a complete regression test of fullCalendar. To that end the specs/fullCalendar.js file should be testing all features outlined on [fc-homepage]. 
+
+To contribute, identify a feature, add a describe into fullCalendar.js for the feature, and create nested describes to test each part of that feature. This is in line with the original authors need to have a fully tested user interface.
+
+The philosophy I am adopting in the code itself is purely selfish.
+
+- Ractoring will be done in fully TDD style. Failing test, code, Succeeding test.
+- Any code refactoring is isolated to this branch; is purely of an academic nature; is not representative of the original authors feature requests, bug fixes, timelines or architectural preferences.
+- Objects are created in functional , not pseudoClassical style.
 
 Getting Set Up
 --------------
-
-You will need [Git][git], [Node][node], and NPM installed. For clarification, please view the [jQuery readme][jq-readme], which requires a similar setup.
-
-Also, you will need the [grunt-cli][grunt-cli] and [bower][bower] packages installed globally (`-g`) on your system:
-
-	npm install -g grunt-cli bower
-
-Then, clone FullCalendar's git repo:
-
-	git clone git://github.com/arshaw/fullcalendar.git
-
-Enter the directory and install FullCalendar's development dependencies:
-
-	cd fullcalendar && npm install
-
-
-Development Workflow
---------------------
-
-After you make code changes, you'll want to compile the JS/CSS so that it can be previewed from the tests and demos. You can either manually rebuild each time you make a change:
-
-	grunt dev
-
-Or, you can run a script that automatically rebuilds whenever you save a source file:
-
-	./build/watch
-
-You can optionally add the `--sourceMap` flag to output source maps for debugging.
-
-When you are finished, run the following command to write the distributable files into the `./build/out/` and `./build/dist/` directories:
-
-	grunt
-
-If you want to clean up the generated files, run:
-
-	grunt clean
-
-	
-Build and Test
---------------
-
 The following components make up the testing
+    
+        npm install -g karma
+        npm install -g jasmine-node
+        npm install -g jasmine-jquery
+        download jasmine fixtures into lib\jasmine-fixture\*.js 
+        download jquery.simulate.js into lib\jquery-simulate\*.js  
 
-	npm install -g karma
-	npm install -g jasmine-node
-	npm install -g jasmine-jquery
-	download jasmine fixtures into lib\jasmine-fixture\*.js   (https://github.com/searls/jasmine-fixture)
-	download jquery.simulate.js into lib\jquery-simulate\*.js  (https://raw.github.com/jquery/jquery-ui/master/tests/jquery.simulate.js)
-to build and run, from the fullCalendar folder 
-	
-	grunt dev
-	
-	grunt
-	
-	karma start --single-run
-	
+[jasmine-jquery],[jasmin-fixture],[jquery-simulate].
 
-Writing Tests
--------------
+to build and test, from the fullCalendar folded command line
+	
+        grunt dev && karma start karma.conf.IntegrationTests.js --single-run
+	
+More rigorous testing
+-
+Test configurations have been seperated into 
 
-When fixing a bug or writing a feature, please make a corresponding HTML file in the `./tests/` directory to visually demonstrate your work. If the test requires user intervention to prove its point, please write instructions for the user to follow. Explore the existing tests for more info.
+         karma.conf.IntegrationTests.js : will run on any rebuild of .build\out\fullCalendar.js
+         karma.conf.regression.js : will run on any change to specs/fullCalendar.js against a previous version in the regression folder.
+         karma.conf.UnitTests.js : will run on any change to specs/**/*.js or any change to src/**/*.js 
+	
+Seperating out the tests in this way allows me to do quick TDD cycles and doesn't require waiting for the regression or integration tests to complete.
 
+My current test setup is to keep 4 consoles open
+
+1. :>grunt dev
+2. :>karma start karma.conf.IntegrationTests.js --single-run
+3. :>karma start karma.conf.regression.js
+4. :>karma start karma.conf.UnitTests.js
+
+Extra testing can be done using AutoHotKey, an example .ahk file is included in the tests folder.
 	
 [fc-homepage]: http://arshaw.com/fullcalendar/
-[git]: http://git-scm.com/
-[node]: http://nodejs.org/
-[grunt-cli]: http://gruntjs.com/getting-started#installing-the-cli
-[bower]: http://bower.io/
-[jq-readme]: https://github.com/jquery/jquery/blob/master/README.md#what-you-need-to-build-your-own-jquery
+[jasmin-fixture]: https://github.com/searls/jasmine-fixture/
+[jquery-simulate]: https://raw.github.com/jquery/jquery-ui/master/tests/jquery.simulate.js
+[jasmine-jquery]: https://github.com/velesin/jasmine-jquery	
