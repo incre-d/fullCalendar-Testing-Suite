@@ -1,3 +1,4 @@
+"use strict";
 describe("weekMode:",function(){
 	beforeEach(function(){	
 		affix("#cal");
@@ -25,6 +26,19 @@ describe("weekMode:",function(){
 			var weekCount =  $(".fc-week").length;
 			expect(weekCount).toEqual(6);
 		});
+		it("should not change height whether 4,5 or weeks",function(){
+		
+			$("#cal").fullCalendar('gotoDate',2009,1);
+			var fourWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,9);
+			var fiveWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,5);
+			var sixWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			
+			expect(fourWeekHeight).toEqual(fiveWeekHeight);
+			expect(fiveWeekHeight).toEqual(sixWeekHeight);
+		});
+		
 	});
 	describe("when weekMode is set to fixed",function(){
 		beforeEach(function(){
@@ -65,7 +79,38 @@ describe("weekMode:",function(){
 			var weekCount =  $(".fc-week").length;
 			expect(weekCount).toEqual(6);
 		});
+		it("should increase height when moving from 6 week to 5 weeks",function(){
 		
+			$("#cal").fullCalendar('gotoDate',2013,9);
+			var fiveWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,5);
+			var sixWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			expect(fiveWeekHeight).toBeGreaterThan(sixWeekHeight);
+		});
+		it("should reduce height when moving from 5 weeks to 6 weeks",function(){
+		
+			$("#cal").fullCalendar('gotoDate',2013,5);
+			var sixWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,9);
+			var fiveWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			expect(fiveWeekHeight).toBeGreaterThan(sixWeekHeight);
+		});
+		it("should increase height when moving from 5 weeks to 4 weeks",function(){
+		
+			$("#cal").fullCalendar('gotoDate',2013,4);
+			var fiveWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2009,1);
+			var fourWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			expect(fourWeekHeight).toBeGreaterThan(fiveWeekHeight);
+		});
+		it("should reduce height when moving from 4 weeks to 5 weeks",function(){
+		
+			$("#cal").fullCalendar('gotoDate',2009,1);
+			var fourWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,4);
+			var fiveWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			expect(fourWeekHeight).toBeGreaterThan(fiveWeekHeight);
+		});
 	});
 	describe("when weekMode is set to variable",function(){
 		beforeEach(function(){
@@ -86,5 +131,18 @@ describe("weekMode:",function(){
 			var weekCount =  $(".fc-week").length;
 			expect(weekCount).toEqual(6);
 		});
+		iit("should not change height whether 4,5 or weeks",function(){
+		
+			$("#cal").fullCalendar('gotoDate',2009,1);
+			var fourWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,9);
+			var fiveWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			$("#cal").fullCalendar('gotoDate',2013,5);
+			var sixWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
+			
+			expect(fourWeekHeight).toEqual(fiveWeekHeight);
+			expect(fiveWeekHeight).toEqual(sixWeekHeight);
+		});
+		
 	});
 });
