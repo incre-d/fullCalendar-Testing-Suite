@@ -131,7 +131,7 @@ describe("weekMode:",function(){
 			var weekCount =  $(".fc-week").length;
 			expect(weekCount).toEqual(6);
 		});
-		iit("should not change height whether 4,5 or weeks",function(){
+		it("should not change height whether 4,5 or weeks",function(){
 		
 			$("#cal").fullCalendar('gotoDate',2009,1);
 			var fourWeekHeight = parseInt($(".fc-week.fc-first .fc-first.fc-day div").css("min-height"));
