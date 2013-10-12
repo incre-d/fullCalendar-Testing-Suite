@@ -69,12 +69,12 @@ describe("hiddenDays:",function(){
 		});
 	});
 	
-	xdescribe("when setting all hiddenDays",function(){
-		//TODO: Need to work out how to catch exceptions
-		iit("should expect to throw an exception",function(){
-			var options = {hiddenDays:[0,1,2,3,4,5,6]}
-			var func = $("#cal").fullCalendar;
-			expect(func,options).toThrow('invalid hiddenDays');
+	describe("when setting all hiddenDays",function(){
+		
+		it("should expect to throw an exception",function(){
+			var options = {hiddenDays:[0,1,2,3,4,5,6]};
+			expect(function(){ $("#cal").fullCalendar(options); }).toThrow('invalid hiddenDays');
+			
 		});
 	});
 	
