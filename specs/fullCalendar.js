@@ -27,7 +27,7 @@ describe("fullCalendar(Integration) :",function(){
 		});
 		
 		
-		xdescribe("and then called again",function(){
+		describe("and then called again",function(){
 			it("should still only have a single set of calendar [header,content]",function(){
 				$("#calendar").fullCalendar();
 				var count = $("#calendar >").length;

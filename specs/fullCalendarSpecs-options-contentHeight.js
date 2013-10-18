@@ -8,7 +8,7 @@ describe("contentHeight:",function(){
 		it("should set the height",function(){
 			$("#cal").css("width",1350);
 			$("#cal").fullCalendar();
-			var height = parseInt($("#cal").css("height"));
+			var height = parseInt($(".fc-content").css("height"));
 			expect(height).toEqual(1000);
 		});
 	});
