@@ -6,117 +6,115 @@ describe("aspectRatio:",function(){
 	
 	describe("when default settings are used",function(){
 		beforeEach(function(){
-			$("#cal").css("width",675)
+			$("#cal").width(675)
 			$("#cal").fullCalendar();	
 		});
 		it("fc-content should use the ratio 1:35 to set height",function(){
-			var height = parseInt($(".fc-content").css("height"));
+			var height = $(".fc-content").height();
 			expect(height).toEqual(500);
 		});
 		it("fc-content should have width of div",function(){
-			var width = parseInt($(".fc-content").css("width"));
+			var width = $(".fc-content").width();
 			expect(width).toEqual(675);
 		});
 	});
 	describe("when initializing the aspectRatio",function(){
 		describe("to 2",function(){
 			beforeEach(function(){
-				$("#cal").css("width",1000)
+				$("#cal").width(1000)
 				$("#cal").fullCalendar({aspectRatio:2});			
 			});
 			it("should not change the width",function(){
-				var width = parseInt($(".fc-content").css("width"));
+				var width = $(".fc-content").width();
 				expect(width).toEqual(1000);
 			});
 			it("should set the height to width sizes very close to ratio of 2",function(){
-				var width = parseInt($(".fc-content").css("width"));
-				var height = parseInt($(".fc-content").css("height"));
+				var width = $(".fc-content").width();
+				var height = $(".fc-content").height();
 				var ratio = Math.round(width/height*100);			
 				expect(ratio).toEqual(200)
 			});
 		});
 		describe("to 1",function(){
 			beforeEach(function(){
-				$("#cal").css("width",1000)
+				$("#cal").width(1000)
 				$("#cal").fullCalendar({aspectRatio:1});			
 			});
 			it("should not change the width",function(){
-				var width = parseInt($(".fc-content").css("width"));
+				var width = $(".fc-content").width();
 				expect(width).toEqual(1000);
 			});
 			it("should set the height to width sizes very close to ratio of 2",function(){
-				var width = parseInt($(".fc-content").css("width"));
-				var height = parseInt($(".fc-content").css("height"));
+				var width = $(".fc-content").width();
+				var height = $(".fc-content").height();
 				var ratio = Math.round(width/height*100);			
 				expect(ratio).toEqual(100)
 			});
 		});
 		describe("to less than 0.5 ",function(){
 			beforeEach(function(){
-				$("#cal").css("width",1000)
+				$("#cal").width(1000)
 				$("#cal").fullCalendar({aspectRatio:0.4});			
 			});
 			it("should not change the width",function(){
-				var width = parseInt($(".fc-content").css("width"));
+				var width = $(".fc-content").width();
 				expect(width).toEqual(1000);
 			});
 			it("should set the height to width ratio to 0.5",function(){
-				var width = parseInt($(".fc-content").css("width"));
-				var height = parseInt($(".fc-content").css("height"));
+				var width = $(".fc-content").width();
+				var height = $(".fc-content").height();
 				var ratio = Math.round(width/height*100);			
 				expect(ratio).toEqual(50)
 			});
 		});
 		describe("to negative ",function(){
 			beforeEach(function(){
-				$("#cal").css("width",1000)
+				$("#cal").width(1000)
 				$("#cal").fullCalendar({aspectRatio:-2});			
 			});
 			it("should not change the width",function(){
-				var width = parseInt($(".fc-content").css("width"));
+				var width = $(".fc-content").width();
 				expect(width).toEqual(1000);
 			});
 			it("should set the height to width ratio to 0.5",function(){
-				var width = parseInt($(".fc-content").css("width"));
-				var height = parseInt($(".fc-content").css("height"));
+				var width = $(".fc-content").width();
+				var height = $(".fc-content").height();
 				var ratio = Math.round(width/height*100);			
 				expect(ratio).toEqual(50)
 			});
 		});
 		describe("to zero",function(){
 			beforeEach(function(){
-				$("#cal").css("width",1000)
+				$("#cal").width(1000)
 				$("#cal").fullCalendar({aspectRatio:0});			
 			});
 			it("should not change the width",function(){
-				var width = parseInt($(".fc-content").css("width"));
+				var width = $(".fc-content").width();
 				expect(width).toEqual(1000);
 			});
 			it("should set the height to width ratio to 0.5",function(){
-				var width = parseInt($(".fc-content").css("width"));
-				var height = parseInt($(".fc-content").css("height"));
+				var width = $(".fc-content").width();
+				var height = $(".fc-content").height();
 				var ratio = Math.round(width/height*100);			
 				expect(ratio).toEqual(50)
 			});
 		});
 		describe("to very large",function(){
 			beforeEach(function(){
-				$("#cal").css("width",1000)
+				$("#cal").width(1000)
 				$("#cal").fullCalendar({aspectRatio:4000});			
 			});
 			it("should not change the width",function(){
-				var width = parseInt($(".fc-content").css("width"));
+				var width = $(".fc-content").width();
 				expect(width).toEqual(1000);
 			});
 			it("should set the height to width ratio to 0.5",function(){
-				var width = parseInt($(".fc-content").css("width"));
-				var height = parseInt($(".fc-content").css("height"));
+				var width = $(".fc-content").width();
+				var height = $(".fc-content").height();
 				var pxHeightPerCharacter = 22;
 				var defaultWeeksInCal = 7;
 				expect(height).toEqual(pxHeightPerCharacter * defaultWeeksInCal)
 			});
 		});
 	});
-	
-	
 });
