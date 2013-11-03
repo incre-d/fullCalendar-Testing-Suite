@@ -7,7 +7,7 @@ describe("allDaySlots:",function(){
 
 	describe("when allDaySlots is not set",function(){
 		describe("in agendaWeek",function(){
-			iit("should default to having an allDaySlots table",function(){
+			it("should default to having an allDaySlots table",function(){
 				var options = {
 					defaultView:'agendaWeek'
 					}
@@ -17,7 +17,7 @@ describe("allDaySlots:",function(){
 			}); 
 		});
 		describe("in agendaDay",function(){
-			iit("should default to having an allDaySlots table",function(){
+			it("should default to having an allDaySlots table",function(){
 				var options = {
 					defaultView:'agendaDay'
 					}
@@ -29,7 +29,7 @@ describe("allDaySlots:",function(){
 	});
 	describe("when allDaySlots is set true",function(){
 		describe("in agendaWeek",function(){
-			iit("should default to having an allDaySlots table",function(){
+			it("should default to having an allDaySlots table",function(){
 				var options = {
 					defaultView:'agendaWeek',
 					allDaySlot:true
@@ -40,7 +40,7 @@ describe("allDaySlots:",function(){
 			}); 
 		});
 		describe("in agendaDay",function(){
-			iit("should default to having an allDaySlots table",function(){
+			it("should default to having an allDaySlots table",function(){
 				var options = {
 					defaultView:'agendaDay',
 					allDaySlot:true
@@ -53,7 +53,7 @@ describe("allDaySlots:",function(){
 	});
 	describe("when allDaySlots is set false",function(){
 		describe("in agendaWeek",function(){
-			iit("should default to having an allDaySlots table",function(){
+			it("should default to having an allDaySlots table",function(){
 				var options = {
 					defaultView:'agendaWeek',
 					allDaySlot:false
@@ -64,7 +64,7 @@ describe("allDaySlots:",function(){
 			}); 
 		});
 		describe("in agendaDay",function(){
-			iit("should default to having an allDaySlots table",function(){
+			it("should default to having an allDaySlots table",function(){
 				var options = {
 					defaultView:'agendaDay',
 					allDaySlot:false
