@@ -1,6 +1,8 @@
 "use strict";
 describe("slotMinutes:",function(){
 
+	var minutesInADay = 1440;
+	
 	beforeEach(function(){
 		affix("#cal");
 	});
@@ -13,7 +15,7 @@ describe("slotMinutes:",function(){
 					}
 				$("#cal").fullCalendar(options);
 				var slotCount = $(".fc-agenda-slots tr").length;
-				expect(slotCount).toEqual(Math.ceil(1440/30));
+				expect(slotCount).toEqual(Math.ceil(minutesInADay/30));
 			}); 
 		});
 		describe("in agendaDay",function(){
@@ -23,7 +25,7 @@ describe("slotMinutes:",function(){
 					}
 				$("#cal").fullCalendar(options);
 				var slotCount = $(".fc-agenda-slots tr").length;
-				expect(slotCount).toEqual(Math.ceil(1440/30));
+				expect(slotCount).toEqual(Math.ceil(minutesInADay/30));
 			}); 
 		});
 	});
@@ -35,7 +37,7 @@ describe("slotMinutes:",function(){
 					}
 				$("#cal").fullCalendar(options);
 				var slotCount = $(".fc-agenda-slots tr").length;
-				expect(slotCount).toEqual(Math.ceil(1440/30));
+				expect(slotCount).toEqual(Math.ceil(minutesInADay/30));
 			}); 
 		});
 		describe("in agendaDay",function(){
@@ -45,18 +47,18 @@ describe("slotMinutes:",function(){
 					}
 				$("#cal").fullCalendar(options);
 				var slotCount = $(".fc-agenda-slots tr").length;
-				expect(slotCount).toEqual(Math.ceil(1440/30));
+				expect(slotCount).toEqual(Math.ceil(minutesInADay/30));
 			}); 
 		});
 	});
 	describe("when slotMinutes is set to a series of times",function(){
-			
+		var slotMinutesList = [10,12,15,17,20,30,35,45,60,62,120,300]
 		describe("in agendaWeek",function(){
-			var x = [10,12,15,17,20,30,35,45,60,62,120,300]
+			
 			beforeEach(function(){
 				affix("#cal2");	
 			});
-			x.forEach(function(slotMinutesIn){
+			slotMinutesList.forEach(function(slotMinutesIn){
 				it("should have slots 1440/x slots",function(){
 					var options = {
 						defaultView:'agendaWeek',
@@ -65,17 +67,17 @@ describe("slotMinutes:",function(){
 					$("#cal2").fullCalendar(options);
 					var slotCount = $(".fc-agenda-slots tr").length;
 					
-					var expected = Math.ceil(1440/slotMinutesIn);
+					var expected = Math.ceil(minutesInADay/slotMinutesIn);
 					expect(slotCount).toEqual(expected);
 				});
 			}); 
 		});
 		describe("in agendaDay",function(){
-			var x = [10,12,15,17,20,30,35,45,60,62,120,300]
+			
 			beforeEach(function(){
 				affix("#cal2");	
 			});
-			x.forEach(function(slotMinutesIn){
+			slotMinutesList.forEach(function(slotMinutesIn){
 				it("should have slots 1440/x slots",function(){
 					var options = {
 						defaultView:'agendaWeek',
@@ -84,7 +86,7 @@ describe("slotMinutes:",function(){
 					$("#cal2").fullCalendar(options);
 					var slotCount = $(".fc-agenda-slots tr").length;
 					
-					var expected = Math.ceil(1440/slotMinutesIn);
+					var expected = Math.ceil(minutesInADay/slotMinutesIn);
 					expect(slotCount).toEqual(expected);
 				});
 			}); 
